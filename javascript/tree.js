@@ -77,4 +77,19 @@ function create() {
 		.style('stroke-width', function(d) {return parseInt(maxDepth + 1 - d.d) + 'px';})
 }
 
+function update() {
+	
+	branches = [];
+	branchCreation(seed);
+	
+	d3.select('svg')
+		.selectAll('line')
+		.data(branches)
+		.transition()
+		.attr('x1', x1)
+		.attr('y1', y1)
+		.attr('x2', x2)
+		.attr('y2', y2);
+}
+
 create();
